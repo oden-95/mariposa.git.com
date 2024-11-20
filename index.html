@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgiveness by Atika <3</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #c06bf4;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      background-image: url('forgivnes.png');
+      background-size: auto;
+      background-position: bottomcenterbottom ;
+      background-repeat: no-repeat;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    button {
+      background-color: #300444;
+      color: #c06bf4;
+      padding: 10px 20px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 5px;
+    }
+    .question {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .response {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Forgiveness by Atika <3</h1>
+
+    <!-- Première question -->
+    <div id="question1" class="question">
+      <p>Es-tu encore fâché contre moi ?</p>
+      <button onclick="answerQ1('oui')">Oui</button>
+      <button onclick="answerQ1('non')">Non</button>
+    </div>
+
+    <div id="response1" class="response hidden"></div>
+
+    <!-- Deuxième question -->
+    <div id="question2" class="question hidden">
+      <p>Est-ce que tu m’aimes ?</p>
+      <button onclick="answerQ2('non')">Non</button>
+      <button onclick="answerQ2('oui')">Oui</button>
+    </div>
+
+    <div id="response2" class="response hidden"></div>
+
+    <!-- Troisième question -->
+    <div id="question3" class="question hidden">
+      <p>Ça te dit de me pardonner ?</p>
+      <button onclick="answerQ3('oui')">Oui</button>
+      <button onclick="answerQ3('non')">Non</button>
+    </div>
+
+    <div id="response3" class="response hidden"></div>
+  </div>
+
+  <script>
+    let chipsCount = 0; // Compteur de chips
+
+    // Première question
+    function answerQ1(answer) {
+      if (answer === 'oui') {
+        document.getElementById('response1').innerText = "Okay, je vais essayer de te faire changer d'avis.";
+      } else {
+        document.getElementById('response1').innerText = "Ça me fait plaisir, mais continue quand même car j'ai pas dormi pour programmer ça.";
+      }
+      document.getElementById('response1').classList.remove('hidden');
+      document.getElementById('question1').classList.add('hidden');
+      document.getElementById('question2').classList.remove('hidden');
+    }
+
+    // Deuxième question
+    function answerQ2(answer) {
+      if (answer === 'non') {
+        if (chipsCount === 0) {
+          document.getElementById('response2').innerText = "Même si je te donne un chips ?";
+          chipsCount++;
+        } else if (chipsCount === 1) {
+          document.getElementById('response2').innerText = "Deux chips ?";
+          chipsCount++;
+        } else if (chipsCount === 2) {
+          document.getElementById('response2').innerText = "Stp, je te donnerai une infinité de chips mais dis oui !";
+        }
+      } else {
+        document.getElementById('response2').innerText = "YOUPIIIIIII MUAH !";
+        document.getElementById('response2').classList.remove('hidden');
+        document.getElementById('question2').classList.add('hidden');
+        document.getElementById('question3').classList.remove('hidden');
+      }
+      document.getElementById('response2').classList.remove('hidden');
+    }
+
+    // Troisième question
+    function answerQ3(answer) {
+      if (answer === 'oui') {
+        document.getElementById('response3').innerText = "KWAK KWAK MERCI MON COEUR TU ES UN AMOUR ! Ça te dit un Monopoly après ?";
+        document.getElementById('response3').classList.remove('hidden');
+        setTimeout(() => {
+          if (confirm("Super, alors à ce soir avec un emoji kiss !")) {
+            document.getElementById('response3').innerText = "Super alors, à ce soir ! 😘";
+          } else {
+            document.getElementById('response3').innerText = "Ce n'est pas grave, quand tu auras du temps peut-être ? <3";
+          }
+        }, 2000);
+      } else {
+        let messages = [
+          "Allez stp, ça me manque de manger des chips avec toi dans le kous.",
+          "Je ferai un effort et je resterai sage, promis.",
+          "Tu sais que Ana 3ati9a, stp pardonne ton boubou.",
+          "Allez stppppppppp.",
+          "Stp, j'ai plus d'inspi et je suis nul en programmation alors dis oui !"
+        ];
+        if (chipsCount < messages.length) {
+          document.getElementById('response3').innerText = messages[chipsCount];
+          chipsCount++;
+        }
+      }
+      document.getElementById('response3').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
